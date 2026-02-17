@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;600;700&family=Noto+Sans+Myanmar:wght@300;400;600;700;900&display=swap');
+
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+:root {
+
+  --luxury-gold: #fbbf24;
+
+  --gold-dark: #f59e0b;
+
+  --bg-dark: #0f172a;
+
+}
+
+
+* {
+
+  box-sizing: border-box;
+
+  scroll-behavior: smooth;
+
+}
+
+body {
+
+  background: black;
+  color: white;
+  margin: 0;
+
+}
+
+/* --- ကျန်တဲ့ Luxury Style တွေ --- */
+
+@layer components {
+
+  .bg-luxury-dark {
+
+    background-color: var(--bg-dark) !important;
+
+  }
+
+  .text-luxury-gold {
+
+    color: var(--luxury-gold) !important;
+  }
+
+  .btn-gold {
+
+    background: linear-gradient(135deg, var(--luxury-gold) 0%, var(--gold-dark) 100%);
+
+    color: #050505 !important;
+
+    padding: 12px 28px;
+
+    border-radius: 12px;
+
+    font-weight: 900;
+
+    text-transform: uppercase;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-decoration: none;
+
+    transition: all 0.3s ease;
+
+  }
+
+  .btn-gold:hover {
+
+    transform: translateY(-3px);
+
+    filter: brightness(1.1);
+
+  }
+
+  .game-card {
+
+    background: rgba(255, 255, 255, 0.03);
+
+    border: 1px solid rgba(212, 175, 55, 0.1);
+
+    backdrop-filter: blur(10px);
+
+    border-radius: 24px;
+
+    transition: 0.4s;
+
+  }
+
+}
+
+.glass {
+
+  background: rgba(10, 10, 10, 0.7);
+
+  backdrop-filter: blur(12px);
+
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+@layer utilities {
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+
+    }
+
+    100% {
+
+      transform: translateX(-50%);
+
+    }
+
+  }
+
+  .animate-marquee {
+
+    display: flex;
+
+    width: max-content;
+
+    animation: marquee 25s linear infinite;
+
+  }
+
+}
