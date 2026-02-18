@@ -27,9 +27,9 @@ const LandingPage: React.FC<LandingPageProps> = ({
     companyName = "BETMAN 688",
     copyrightYear = 2026,
     brandName = "BETMAN 688",
-    marqueeText = "BETMAN 688 မှကြိုဆိုပါသည် - အခုပဲ အကောင်းဆုံးနှင့် ယုံကြည်ရဆုံး Slot ဂိမ်းဝန်ဆောင်မှု - မနက် ၇ နာရီမှ ည ၁ နာရီအထိ • အမြန်ဆုံး ငွေသွင်းငွေထုတ် စိတ်ချရမှု ၁၀၀% • 24/7 Service ",
-    viberNumber = "+959777737964",
-    telegramUsername = "Ouhmoo964"
+    marqueeText = "BETMAN 688 မှကြိုဆိုပါသည် - အခုပဲ အကောင်းဆုံးနှင့် ယုံကြည်ရဆုံး Slot ဂိမ်းဝန်ဆောင်မှု - ပိတ်ရက်မရှိ • အမြန်ဆုံး ငွေသွင်းငွေထုတ် စိတ်ချရမှု ၁၀၀% • 24/7 Service ",
+    viberNumber = "+959777778056",
+    telegramUsername = "Myat-2"
 }) => {
 
     // Facebook Pixel Logic

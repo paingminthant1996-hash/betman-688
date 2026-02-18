@@ -6,30 +6,30 @@ const Contact = () => {
     {
       name: 'Viber',
       icon: '/viber.png',
-      link: 'viber://add?number=959777737964',
+      link: 'viber://add?number=959777778056',
       color: 'bg-[#7360F2]',
-      username: '+959777737964'
+      username: '+959777778056'
     },
     {
       name: 'Telegram',
       icon: '/telegram.png',
-      link: 'http://t.me/Ouhmoo964',
+      link: 'http://t.me/',
       color: 'bg-[#24A1DE]',
-      username: '@Ouhmoo964'
+      username: '@Myat2000'
     },
     {
       name: 'Messenger',
       icon: '/messager.png',
-      link: 'https://m.me/BETMAN688',
+      link: 'https://m.me/',
       color: 'bg-[#00B2FF]',
       username: 'BETMAN688'
     },
     {
       name: 'Phone',
       icon: '/phone.png',
-      link: 'tel:09777737964',
+      link: 'tel:09777778056',
       color: 'bg-[#22C55E]',
-      username: '09-777737964'
+      username: '09-777778056'
     }
   ];
 
