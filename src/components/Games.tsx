@@ -4,7 +4,8 @@ import { PlayCircle, ExternalLink } from 'lucide-react';
 interface GameData {
   name: string;
   provider: string;
-  imageUrl: string;
+  videoUrl: string; // Pinterest link ဒါမှမဟုတ် Online link
+  backupUrl: string; // စက်ထဲက backup ဖိုင် (ဥပမာ- /slot.mp4)
   featured?: boolean;
 }
 
@@ -13,36 +14,28 @@ interface GamesProps {
   onGamePlay?: (gameName: string) => void;
 }
 
-const InternalGameCard = ({ name, provider, imageUrl, featured, onPlay }: any) => {
-  const isVideo = imageUrl.match(/\.(mp4|webm|ogg)$/i);
-
+const InternalGameCard = ({ name, provider, videoUrl, backupUrl, featured, onPlay }: any) => {
   return (
     <div className="relative group cursor-pointer" onClick={onPlay}>
       <div className="bg-[#0a0a0a] border border-white/5 rounded-[2.5rem] overflow-hidden transition-all duration-500 hover:border-yellow-500/40 hover:shadow-[0_0_50px_rgba(234,179,8,0.15)]">
 
         {/* Media Section */}
         <div className="relative aspect-[4/5] overflow-hidden m-3 rounded-[2rem] bg-black">
-          {isVideo ? (
-            <video
-              src={imageUrl}
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-            />
-          ) : (
-            <img
-              src={imageUrl}
-              alt={name}
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-              onError={(e: any) => {
-                e.target.src = 'https://images.unsplash.com/photo-1614028674026-a65e31bfd27c?q=80&w=400';
-              }}
-            />
-          )}
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+          >
+            {/* ပထမ ဦးစားပေး - Pinterest URL */}
+            <source src={videoUrl} type="video/mp4" />
 
-          {/* Win Rate Badge - Modern Glass Look */}
+            {/* ဒုတိယ ဦးစားပေး - URL ပျက်နေရင် စက်ထဲကဖိုင်ကို ပြမယ် */}
+            <source src={backupUrl} type="video/mp4" />
+          </video>
+
+          {/* Win Rate Badge */}
           <div className="absolute top-5 right-5 bg-black/60 backdrop-blur-xl px-4 py-2 rounded-2xl border border-white/10 text-center shadow-2xl">
             <p className="text-[8px] text-gray-400 uppercase font-black tracking-widest leading-none mb-1">Win Rate</p>
             <p className="text-yellow-500 font-black text-sm">98.2%</p>
@@ -80,10 +73,31 @@ const InternalGameCard = ({ name, provider, imageUrl, featured, onPlay }: any) =
 
 const Games: React.FC<GamesProps> = ({ games, onGamePlay }) => {
   const defaultGames: GameData[] = [
-    { name: 'GATES OF OLYMPUS', provider: 'PRAGMATIC PLAY', imageUrl: '/slot.mp4' },
-    { name: 'SWEET BONANZA', provider: 'PRAGMATIC PLAY', imageUrl: '/slot.mp4' },
-    { name: 'STARLIGHT PRINCESS', provider: 'PRAGMATIC PLAY', imageUrl: '/slot.mp4', featured: true },
-    { name: 'FORTUNE TIGER', provider: 'PG SOFT', imageUrl: '/slot.mp4' },
+    {
+      name: 'GATES OF OLYMPUS',
+      provider: 'PRAGMATIC PLAY',
+      videoUrl: 'https://pin.it/45AXsKnxn/', // ဒီမှာ link ထည့်
+      backupUrl: '/slot1.mp4' // စက်ထဲက backup
+    },
+    {
+      name: 'SWEET BONANZA',
+      provider: 'PRAGMATIC PLAY',
+      videoUrl: 'https://v1.pinimg.com/videos/mc/720p/70/3c/cd/703ccdb93fe522e67de4226cc183e565.mp4',
+      backupUrl: '/slot2.mp4'
+    },
+    {
+      name: 'STARLIGHT PRINCESS',
+      provider: 'PRAGMATIC PLAY',
+      videoUrl: 'https://v1.pinimg.com/videos/mc/720p/26/a4/2b/26a42bb5fd33d6b511b00499a43060c1.mp4',
+      backupUrl: '/slot3.mp4',
+      featured: true
+    },
+    {
+      name: 'FORTUNE TIGER',
+      provider: 'PG SOFT',
+      videoUrl: 'https://v1.pinimg.com/videos/mc/720p/f9/e0/e1/f9e0e19dc53a6709ec34d170b69d8f81.mp4',
+      backupUrl: '/slot4.mp4'
+    },
   ];
 
   const gamesData = games || defaultGames;
@@ -113,17 +127,16 @@ const Games: React.FC<GamesProps> = ({ games, onGamePlay }) => {
               key={index}
               name={game.name}
               provider={game.provider}
-              imageUrl={game.imageUrl}
+              videoUrl={game.videoUrl}
+              backupUrl={game.backupUrl}
               featured={game.featured}
               onPlay={() => onGamePlay?.(game.name)}
             />
           ))}
         </div>
 
-        {/* Action Button Links - Styled for maximum "Premium" look */}
+        {/* Action Button Links */}
         <div className="mt-24 flex flex-col md:flex-row gap-8 justify-center items-center">
-
-          {/* Link 1 - Main Golden Button */}
           <a
             href="https://m.bat688.com/"
             target="_blank"
@@ -137,7 +150,6 @@ const Games: React.FC<GamesProps> = ({ games, onGamePlay }) => {
             </span>
           </a>
 
-          {/* Link 2 - Sleek Border Button */}
           <a
             href="https://m.batman688.net/"
             target="_blank"
@@ -149,16 +161,6 @@ const Games: React.FC<GamesProps> = ({ games, onGamePlay }) => {
               <ExternalLink size={28} className="text-yellow-500" />
             </span>
           </a>
-        </div>
-
-        {/* Helpful Info Tip */}
-        <div className="text-center mt-10">
-          <div className="inline-flex items-center gap-3 px-6 py-3 rounded-2xl bg-white/[0.02] border border-white/5">
-            <div className="w-1.5 h-1.5 rounded-full bg-yellow-500 animate-ping" />
-            <p className="text-gray-400 text-xs font-bold uppercase tracking-widest">
-              Link တစ်ခုမရပါက နောက်တစ်ခုဖြင့် စမ်းကြည့်ပါ
-            </p>
-          </div>
         </div>
       </div>
     </section>
