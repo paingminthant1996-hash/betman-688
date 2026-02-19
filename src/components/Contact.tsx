@@ -33,11 +33,53 @@ const Contact = () => {
     }
   ];
 
+  // SVG Icons များကို တိုက်ရိုက်ထည့်သွင်းထားသော Payment Logos Array
   const paymentLogos = [
-    { name: 'KPay', path: '/kpay.png' },
-    { name: 'WaveMoney', path: '/wave.png' },
-    { name: 'AYAPay', path: '/ayapay.png' },
-    { name: 'CBPay', path: '/cbpay.png' }
+    {
+      name: 'KPay',
+      icon: (
+        <svg width="100%" height="100%" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="100" height="100" rx="20" fill="#104494" />
+          <path d="M30 35V65M30 50H45L60 65M45 50L60 35" stroke="white" strokeWidth="8" strokeLinecap="round" />
+        </svg>
+      )
+    },
+    {
+      name: 'WaveMoney',
+      icon: (
+        <svg width="100%" height="100%" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="100" height="100" rx="20" fill="#FFD700" />
+          <path d="M25 40C25 35 30 30 35 30H65C70 30 75 35 75 40V60C75 65 70 70 65 70H35C30 70 25 65 25 60V40Z" fill="#EE1C25" />
+          <path d="M40 45L50 55L60 45" stroke="white" strokeWidth="6" strokeLinecap="round" />
+        </svg>
+      )
+    },
+    {
+      name: 'AYAPay',
+      icon: (
+        <svg width="100%" height="100%" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="100" height="100" rx="20" fill="#E61E26" />
+          <path d="M50 25L25 70H75L50 25Z" fill="white" />
+          <path d="M45 50L50 40L55 50H45Z" fill="#E61E26" />
+        </svg>
+      )
+    },
+    {
+      name: 'CBPay',
+      icon: (
+        <svg width="100%" height="100%" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          {/* CB Pay ရဲ့ အပြာရောင် Background Box */}
+          <rect width="100" height="100" rx="20" fill="#005696" />
+
+          {/* သက်တံရောင် လိုင်းလေးများ (Logo ပုံစံ) */}
+          <path d="M25 45C25 35 35 25 50 25C65 25 75 35 75 45" stroke="#FFD200" strokeWidth="6" strokeLinecap="round" />
+          <path d="M35 45C35 40 40 35 50 35C60 35 65 40 65 45" stroke="#EE1C25" strokeWidth="6" strokeLinecap="round" />
+
+          {/* အဖြူရောင် 'CB' စာလုံး (အနီးစပ်ဆုံး Icon ပုံစံ) */}
+          <path d="M40 55H60M50 55V75" stroke="white" strokeWidth="8" strokeLinecap="round" />
+        </svg>
+      )
+    }
   ];
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -84,21 +126,15 @@ const Contact = () => {
             Available 24/7 Live Support
           </p>
 
-          {/* Payment Logos Sliding Section - Fixed Spacing and Layout */}
           <div className="relative overflow-hidden bg-white/[0.02] py-10 rounded-[2.5rem] border border-white/5 mb-10">
             <div className="animate-scroll flex items-center gap-16 md:gap-32">
               {[...paymentLogos, ...paymentLogos, ...paymentLogos].map((pay, index) => (
                 <div key={index} className="logo-item flex flex-col items-center gap-3 shrink-0 px-6 group">
-                  <div className="w-16 h-16 md:w-20 md:h-20 bg-white rounded-2xl flex items-center justify-center p-2 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                    <img
-                      src={pay.path}
-                      alt={pay.name}
-                      className="w-full h-full object-contain"
-                      onError={(e: any) => {
-                        e.target.onerror = null;
-                        e.target.src = "https://placehold.co/100x100/ffffff/000000?text=" + pay.name
-                      }}
-                    />
+                  <div className="w-16 h-16 md:w-20 md:h-20 bg-white rounded-2xl flex items-center justify-center p-3 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                    {/* ပုံရိပ်အစား SVG Icon ကို တိုက်ရိုက် Render လုပ်ပေးထားသည် */}
+                    <div className="w-full h-full">
+                      {pay.icon}
+                    </div>
                   </div>
                   <span className="text-[10px] md:text-[12px] font-black text-gray-400 uppercase tracking-[0.2em] group-hover:text-yellow-500 transition-colors">
                     {pay.name}
@@ -109,6 +145,7 @@ const Contact = () => {
           </div>
         </div>
 
+        {/* ကျန်ရှိသော Register နှင့် Social Button များ */}
         <div className="flex flex-col gap-4 mb-10">
           <a
             href="https://m.bat688.com/"
@@ -134,10 +171,6 @@ const Contact = () => {
                     src={item.icon}
                     alt={item.name}
                     className="w-full h-full object-contain"
-                    onError={(e: any) => {
-                      e.target.onerror = null;
-                      e.target.src = "https://www.svgrepo.com/show/501340/generic-user.svg";
-                    }}
                   />
                 </div>
                 <div className="text-center">
@@ -149,6 +182,7 @@ const Contact = () => {
           </div>
         </div>
 
+        {/* Message Form Section */}
         <div className="bg-[#0f0f0f] border border-white/5 rounded-[3rem] p-8 md:p-12 shadow-2xl relative">
           <div className="flex flex-col items-center gap-4 mb-10 text-center">
             <div className="w-16 h-16 rounded-2xl overflow-hidden border-2 border-yellow-500/20 bg-black p-2">
