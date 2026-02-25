@@ -23,3 +23,5 @@ yarn-error.log*
 Thumbs.db
 #TASK
 MY.txt
+.vercel
+.env*.local

@@ -1,25 +1,19 @@
-import LandingPage from '@/components/LandingPageNew'
-
-
+import LandingPage from '@/components/LandingPageNew';
+import FootballLive from "@/components/FootballLive";
 
 export default function Home() {
-
   return (
-
-    <LandingPage
-
-      gameUrl="https://m.bat688.com/"
-
-      companyName="AZONE PREMIUM SELLER"
-
-      copyrightYear={2026}
-
-      brandName="Betman 688"
-
-      marqueeText="🔥 စိတ်ချရဆုံး ဂိမ်းဝန်ဆောင်မှုများ •ပိတ်ရက်မရှိ • အမြန်ဆုံး ငွေသွင်းငွေထုတ် စိတ်ချရမှု ၁၀၀% • 24/7 Service 🔥"
-
-    />
-
+    <main>
+      <LandingPage
+        gameUrl="https://m.bat688.com/"
+        companyName="AZONE PREMIUM SELLER"
+        copyrightYear={2026}
+        brandName="Betman 688"
+        marqueeText="🔥 စိတ်ချရဆုံး ဂိမ်းဝန်ဆောင်မှုများ • ပိတ်ရက်မရှိ • အမြန်ဆုံး ငွေသွင်းငွေထုတ် စိတ်ချရမှု ၁၀၀% • 24/7 Service 🔥"
+      />
+      <div className="container mx-auto p-5 mb-20">
+        <FootballLive />
+      </div>
+    </main>
   );
-
 }
